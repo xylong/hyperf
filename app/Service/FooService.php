@@ -9,6 +9,6 @@ class FooService
     #[AsyncQueueMessage]
     public function dump($data) : array 
     {
-        $this->dump($data);
+        return $this->dump($data);
     }
 }
