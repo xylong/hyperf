@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Hyperf\HttpServer\Annotation\Controller;
+use Hyperf\HttpServer\Annotation\RequestMapping;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 
+#[Controller]
 class FooController
 {
     public function index(RequestInterface $request, ResponseInterface $response)
@@ -14,11 +17,12 @@ class FooController
         return $response->raw('Hello Hyperf!');
     }
 
-    public function job(RequestInterface $request, ResponseInterface $response) : Returntype 
+    #[RequestMapping(path: "foo", methods: "get,post")]
+    public function job(RequestInterface $request, ResponseInterface $response)
     {
         $data = ['a' => 'apple'];
         // queue_push(new FooJob($data));
-        di()->get(FooService::class)->dump($data);
-        return $response->json([]);    
+//        di()->get(FooService::class)->dump($data);
+//        return $response->json([]);
     }
 }

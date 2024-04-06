@@ -25,4 +25,20 @@ return [
         ],
         'max_messages' => 0,
     ],
+    'userQueen' => [
+        'driver' => \Hyperf\AsyncQueue\Driver\RedisDriver::class,
+        'redis' => [
+            'pool' => 'default',
+        ],
+        'channel' => 'user',
+        'timeout' => 2,
+        'retry_seconds' => 5,
+        'handle_timeout' => 10,
+        'processes' => 1,
+        'concurrent' => [
+            'limit' => 10,
+        ],
+        'max_messages' => 0,
+    ],
+
 ];
