@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace App\Process;
 
-use Hyperf\Process\AbstractProcess;
+use Hyperf\AsyncQueue\Process\ConsumerProcess;
 use Hyperf\Process\Annotation\Process;
 
 #[Process(name: 'UserProcess')]
-class UserProcess extends AbstractProcess
+class UserProcess extends ConsumerProcess
 {
-    public function handle(): void
-    {
-        var_dump('aaaaa');
-    }
+
+    public string $queue = 'userQueen';
 }
